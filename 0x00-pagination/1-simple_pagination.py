@@ -37,8 +37,6 @@ class Server:
         assert (page > 0 and page_size > 0)
         idx = index_range(page, page_size)
         self.dataset()
-        if idx[0] >= len(self.__dataset):
+        if idx[0] >= len(self.__dataset) or idx[1] >= len(self.__dataset):
             return []
-        if idx[1] >= len(self.__dataset):
-            return self.__dataset[idx[0]:]
         return self.__dataset[idx[0]:idx[1]]
