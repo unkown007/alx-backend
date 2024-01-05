@@ -33,8 +33,10 @@ class Server:
         return self.__dataset
 
     def get_page(self, page: int = 1, page_size: int = 10) -> List[List]:
-        assert (isinstance(page, int) and isinstance(page_size, int))
-        assert (page > 0 and page_size > 0)
+        assert type(page) == int
+        assert type(page_size) == int
+        assert page > 0
+        assert page_size > 0
         size = len(self.dataset())
         start, end = index_range(page, page_size)
         end = min(end, size)
