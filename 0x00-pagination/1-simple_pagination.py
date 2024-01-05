@@ -9,7 +9,7 @@ def index_range(page: int, page_size: int) -> tuple:
     for those particular pagination parameter
     """
     sIndex = page_size * (page - 1)
-    eIndex = page_size + sIndex
+    eIndex = page_size * page
     return (sIndex, eIndex)
 
 
