@@ -19,8 +19,6 @@ users = {
     3: {"name": "Spock", "locale": "kg", "timezone": "Vulcan"},
     4: {"name": "Teletubby", "locale": None, "timezone": "Europe/London"},
 }
-
-
 app = Flask(__name__)
 babel = Babel(app)
 app.config.from_object(Config)
@@ -51,12 +49,7 @@ def hello():
     """ Render a template
     """
     if g.user is not None:
-        locale = g.user.get("locale")
-        if locale is not None and locale in Config.LANGUAGES:
-            with force_locale(g.user.get("locale")):
-                return render_template(
-                        '5-index.html', user=g.user.get("name"))
-        return render_template('5-index.html', user=g.user.get("name"))
+        return render_template('5-index.html', user=g.user.get("name", ""))
     return render_template('5-index.html')
 
 
